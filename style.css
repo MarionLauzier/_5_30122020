@@ -1,0 +1,14 @@
+header {
+	background-color: #f3e9f1;
+}
+.banner {
+	background-image: url("img/banner.png");
+	min-height: 258px;
+	background-position: center;
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+	position: relative;
+}
+body {
+	background: linear-gradient(rgba(227, 151, 61, 0.5), rgba(143, 91, 254, 0.5));
+}
