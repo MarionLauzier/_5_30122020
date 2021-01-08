@@ -20,51 +20,85 @@ fetch("http://localhost:3000/api/teddies")
 const addArticle = (article) => {
 
     var figure=document.createElement('figure');
-    figure.classList.add("card", "col-12", "col-md-6");
-    figure.id=article._id;
-    figure.innerHTML=("<img class='card-img-top' src="+ article.imageUrl + " alt=.../>" +"<figcaption class='card-body'> <h3 class='card-title'>"+ article.name +"</h3> <p class='card-text'><strong>"+ article.price+"</strong></p> </figcaption><a href='article.html?article_id="+article._id+"'class='stretched-link'> Voir détails du produits </a>");
+    figure.classList.add("card", "border-0", "shadow-sm");
+    //figure.id=article._id;
+    var img = document.createElement("img");
+        img.classList.add('card-img-top');
+        img.setAttribute("src", article.imageUrl);
+        img.setAttribute("alt", ("photo de l'ours "+article.name));
+    figure.appendChild(img);
+    
+    var caption = document.createElement("figcaption");
+        caption.classList.add('card-body', 'text-center');
+    figure.appendChild(caption);
+
+    var title = document.createElement("h4");
+        title.classList.add('card-title', 'text-left');
+        title.innerHTML= article.name;
+    caption.appendChild(title);
+
+    var price=document.createElement("p");
+        price.classList.add('card-text');
+        price.innerHTML= ("<strong>"+ (article.price/100).toFixed(2)+"€</strong>");
+    caption.appendChild(price);
+
+    var details=document.createElement("a");
+        details.classList.add("stretched-link", "btn", "btn-primary", "border-0");
+        details.setAttribute("href", ("article.html?article_id="+article._id));
+        details.innerHTML=("Voir les détails du produit");
+    caption.appendChild(details);
+
+    // figure.innerHTML=("<img class='card-img-top' src="+ article.imageUrl + " alt=.../>" +"<figcaption class='card-body text-center'> <h4 class='card-title text-left'>"+ article.name +"</h4> <p class='card-text'><strong>"+ (article.price/100).toFixed(2)+"€</strong></p> <a href='article.html?article_id="+article._id+"'class='stretched-link btn btn-primary border-0'> Voir les détails du produit </a></figcaption>");
     var articleContainer = document.getElementById("articles");
-    articleContainer.appendChild(figure);
+
+    var col=document.createElement('div');
+        col.classList.add("col-12", "col-md-6");
+    articleContainer.appendChild(col);
+
+    col.appendChild(figure);
 }
 
 
 fetchArticles()
 
-const price = document.getElementById("filter");
-price.addEventListener('click', () => {
-    var listFigure = document.getElementsByTagName('figure');
-   
-    //let produit0=listFigure[0];
-    //let prix0=produit0.querySelector("strong").textContent;
-    let listprix =[];
-    let orderlistprix =[];
-    //listFigure.shift();
-    //console.log(listFigure);
-    
-    for (let figure of listFigure)
-    {
-    
-    let prix = figure.getElementsByTagName("strong")[0].textContent;
-    listprix.push(prix);
-    orderlistprix.push(prix);
-    
-    }
-   
-    
-    orderlistprix.sort();
-    console.log(orderlistprix);
-    let order=0;
-    for (let prix of orderlistprix) {
-        let index = listprix.indexOf(prix);
-        order++;
-        
-        console.log(index);
-        listFigure[index].classList.add("order-"+order);
-    }
+const pricedown = document.getElementById("filterdown");
+const priceup = document.getElementById("filterup");
 
-    
+   
+
+
+function order(direction){
+var listFigure = document.getElementsByTagName('figure');
+let listprix =[];
+let orderlistprix =[];
+
+for (let figure of listFigure)
+{
+
+let prix = figure.getElementsByTagName("strong")[0].textContent;
+listprix.push(prix);
+orderlistprix.push(prix);
+
 }
-)
+orderlistprix.sort();
+if (direction=="up") {orderlistprix.reverse();}
+let order=0;
+for (let prix of orderlistprix) {
+    let index = listprix.indexOf(prix);
+    order++;
+    
+var parent= listFigure[index].parentElement;
+var parentOrder= parent.classList.item(2);
+if (parentOrder==null) {
+    parent.classList.add("order-"+order);
+}
+else {parent.classList.replace(parentOrder, ("order-"+order))}
+}
+
+
+}
+pricedown.addEventListener('click', ()=>{order("down");});
+priceup.addEventListener('click', ()=>{order("up");});
 // async function getFigure() {
 //     await fetchArticles();
 //     let listFigure = document.getElementsByTagName('figure');

@@ -4,12 +4,13 @@
 		<meta charset="utf-8" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>orinoco</title>
+		<title>Orinoco, peluches</title>
 		<meta
 			name="description"
 			content="Achat d'ours en peluche fait main sur Orinoco"
 		/>
 		<meta name="robots" content="index, follow" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 		<link
 			rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -21,25 +22,18 @@
 			src="https://kit.fontawesome.com/278b17786f.js"
 			crossorigin="anonymous"
 		></script>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-		<script src="requestproduct.js" async></script>
+
+		<script src="cart.js" async></script>
 	</head>
 	<body>
 		<a href="index.html">Accueil</a>
-		<article>
-			<div id="image"></div>
-			<h2 id="name"></h2>
-			<p id="price"></p>
-			<p id="description"></p>
-			<div id="customization">
-				<label for="couleur">Choisissez une couleur:</label>
-				<select name="couleur" id="color">
-					<option value="">--couleurs--</option>
-				</select>
-			</div>
-		</article>
-		<label for="quantite">Quantité</label>
-		<input name="quantite" id="quantity" type="number" min="1" value="1" />
-		<button>Ajouter au panier</button>
+		<h1>Votre commande</h1>
+		<table id="summary">
+			<tr>
+				<td>Id</td>
+				<td>Quantité</td>
+			</tr>
+		</table>
+		<button>passer commande</button>
 	</body>
 </html>

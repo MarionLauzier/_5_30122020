@@ -1,4 +1,5 @@
-header {
+header,
+.card {
 	background-color: #f3e9f1;
 }
 .banner {
@@ -11,4 +12,96 @@ header {
 }
 body {
 	background: linear-gradient(rgba(227, 151, 61, 0.5), rgba(143, 91, 254, 0.5));
+}
+
+.jumbotron.title {
+	background-color: #f3e9f1;
+	color: #5f3aad;
+	font-weight: 600;
+	font-style: italic;
+}
+.form-inline label {
+	font-size: 1.25rem;
+}
+#peluche {
+	border: solid 2px #5f3aad;
+	border-top-left-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	height: 40px;
+	max-width: 250px;
+}
+label img {
+	padding: 0 0.5rem;
+}
+#search {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-right-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	border: solid 2px #5f3aad;
+	margin-left: -2px;
+	height: 40px;
+}
+
+#search span {
+	transform: scale(1);
+	transition: all 200ms;
+}
+#search:hover span,
+#search:focus span {
+	transform: scale(1.2);
+}
+.card-img-top {
+	height: 250px;
+	object-fit: fill;
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+}
+.btn-primary {
+	background-color: #8f5bfe;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+	background-color: #5f3aad;
+	font-weight: 600;
+}
+
+.btn-primary:focus {
+	box-shadow: 0 0 0 0.2rem rgba(143, 91, 254, 0.5);
+}
+.card {
+	border-radius: 1rem;
+}
+.list-inline-item {
+	border: 2px solid #5f3aad;
+	border-radius: 1.5rem;
+	padding: 0.25rem 0.5rem;
+	color: white;
+	background-color: #e3973d;
+	transform: scale(1);
+	transition: transform 200ms;
+}
+.list-inline-item:hover,
+.list-inline-item:focus {
+	transform: scale(1.1);
+}
+.list-inline-item a {
+	color: #5f3aad;
+	font-weight: 600;
+	text-decoration: none;
+}
+.list-inline-item i {
+	color: white;
+}
+@media all and (min-width: 992px) {
+	.card-img-top {
+		height: 300px;
+	}
+}
+@media all and (min-width: 1200px) {
+	.card-img-top {
+		height: 350px;
+	}
 }

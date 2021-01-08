@@ -51,7 +51,7 @@
 								<a class="nav-link" href="index.html"><i class="fas fa-home fa-fw"></i> Accueil</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#"> <i class="fas fa-shopping-cart fa-fw"></i> Panier</a>
+								<a class="nav-link" href="cart.html"> <i class="fas fa-shopping-cart fa-fw"></i> Panier</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link mr-sm-0" href="#"><i class="fas fa-user fa-fw"></i> S'identifier</a>
@@ -63,47 +63,51 @@
 		</header>
 
 		<main class="container">
-			<h1 class="jumbotron">Trouvez les plus beaux ours en peluches sur Orinoco.</h1>
+			<h1 class="row jumbotron title text-center">Trouvez les plus beaux ours en peluches sur Orinoco.</h1>
 			
-			<h2 class="row">Toutes nos peluches sont faites à la main!</h1>
-			<form class="row" method="POST" action="#">
-				<p class='form-inline'>
-					<label for="peluche"> Trouvez votre <img src="img/teddy-bear.png" alt="icone tête ours"/> : </label>
+			<h2 class="w-100 text-center font-italic mb-4">Toutes nos peluches sont faites à la main!</h1>
+			<form class="form-inline mb-3" method="POST" action="#">
+
+					<label for="peluche"> Trouvez votre  <img src="img/teddy-bear.png" alt="icone tête ours"/> : </label>
+					<div class="d-flex flex-nowrap">
 					<input
 						type="search"
 						id="peluche"
 						name="recherche"
 						placeholder="peluche"
-						class="form-control"
+						class="form-control ml-2 shadow"
 					/>
-
-					<button type="submit" name="lance_recherche" class="btn btn-outline-secondary">
+					
+					<button type="submit" name="lance_recherche" id="search" class="btn btn-primary shadow">
 						<span class="fas fa-search"></span>
 						
 					</button>
-				</p>
+					
+						</div>
+
 			</form>
-				<p class="row">Triez par :</p>
-				<ul class="fa-ul row list-inline">
-					<li class='list-inline-item'>
-						<i class="fas fa-euro-sign"></i>
-						<i class="fas fa-long-arrow-alt-up"></i>
+				<p class="row font-weight-bold ml-5 mb-0">Triez par :</p>
+				<ul class="row list-inline justify-content-center">
+					<li class='list-inline-item mb-2 shadow' id="filterup">
+						
+						<i class="fas fa-euro-sign" ></i>
+						<i class="fas fa-long-arrow-alt-up"></i> 
 						<a href="#">Prix croissant</a>
 					</li>
-					<li class='list-inline-item' id="filter">
+					<li class='list-inline-item  mb-2 shadow' id="filterdown">
 						<i class="fas fa-euro-sign"></i>
 						<i class="fas fa-long-arrow-alt-down"></i>
 						<a href="#">Prix décroissant</a>
 					</li>
-					<li class='list-inline-item'><i class="fas fa-award"></i> <a href="#">Pertinence</a></li>
-					<li class='list-inline-item'><i class="fas fa-certificate"></i> <a href="#">Nouveautés</a></li>
-					<li class='list-inline-item'>
+					<li class='list-inline-item  mb-2 shadow'><i class="fas fa-award"></i> <a href="#">Pertinence</a></li>
+					<li class='list-inline-item  mb-2 shadow'><i class="fas fa-certificate"></i> <a href="#">Nouveautés</a></li>
+					<li class='list-inline-item  mb-2'>
 						<i class="fas fa-heart"></i>
 						<a href="#">Popularité</a>
 					</li>
 				</ul>
 			</nav>
-			<h2 class="row">Articles</h2>
+			<h3 class="row">Articles</h3>
 			<div class="row" id="articles">
 
 
