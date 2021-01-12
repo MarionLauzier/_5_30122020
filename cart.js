@@ -13,21 +13,37 @@
 //         table.appendChild(productRow);
 //       //}
 //}
+const basicsummary= () =>
+{ 
+    var k=0;
+    let table= document.getElementById("summary");
+    while (k < localStorage.length) {
+        
+        let productRow= document.createElement("tr");
+        let productK = localStorage.key(k);
+        let quantityK = localStorage.getItem(productK);
+        productRow.innerHTML=("<td>"+productK+"</td><td>"+quantityK+"</td>");
+        table.appendChild(productRow);
 
+        k++;
+        console.log(k);
+        }
+}
+basicsummary();
 
-async function fetchProductSummary(productId) {
-    fetch("http://localhost:3000/api/teddies/"+productId)
-     .then(response => {
-         if (!response.ok) { 
-             throw new Error('Server response is not successful');
-            } 
-        return response.json()
-     })
-     .then (response => { console.log(response.name);})
-     .catch(error => alert("Erreur : " + error));
-    }
+// async function fetchProductSummary(productId) {
+//     fetch("http://localhost:3000/api/teddies/"+productId)
+//      .then(response => {
+//          if (!response.ok) { 
+//              throw new Error('Server response is not successful');
+//             } 
+//         return response.json()
+//      })
+//      .then (response => { console.log(response.name);})
+//      .catch(error => alert("Erreur : " + error));
+//     }
 
-    fetchProductSummary("5beaa8bf1c9d440000a57d94").then(name=>{console.log(name);});   
+//     fetchProductSummary("5beaa8bf1c9d440000a57d94").then(name=>{console.log(name);});   
 //summary();
 //     //summary();
 //async function test(){
@@ -40,4 +56,5 @@ async function fetchProductSummary(productId) {
 // console.log(body);
 
 let order=document.getElementsByTagName("button")[0];
-order.addEventListener("click", ()=>{localStorage.clear();});
+order.addEventListener("click", ()=>{localStorage.clear();
+console.log(localStorage);});
