@@ -270,3 +270,23 @@ footer .nav-link:hover {
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 /* #endregion */
+
+/* #region  Cart */
+.table {
+	border-color: #5f3aad;
+}
+td img {
+	max-width: 150px;
+	width: 100%;
+}
+
+.table td,
+.table thead th {
+	vertical-align: middle;
+	border-color: #5f3aad;
+}
+.table tfoot td {
+	
+	border-width:2px;
+	border-bottom: solid 1px #5f3aad;
+/* #endregion */

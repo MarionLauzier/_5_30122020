@@ -1,5 +1,3 @@
-// const { mainModule } = require("process");
-
 const fetchArticles = () => {
 	fetch("http://localhost:3000/api/teddies")
 		.then((response) => {
@@ -13,7 +11,6 @@ const fetchArticles = () => {
 				addArticle(article);
 			}
 		})
-		//.then( data => {let listFigure = document.getElementsByTagName('figure'); return listFigure })
 		.catch((error) => alert("Erreur : " + error));
 };
 
