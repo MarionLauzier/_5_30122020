@@ -22,6 +22,36 @@ async function fetchId(productId) {
 	return json;
 }
 
+const removeItem = (rowIndex) => {
+	//supprime la ligne
+	let table = document.getElementById("summary");
+	let row = table.childNodes[rowIndex];
+
+	table.removeChild(row);
+	//Mettre à jour le local storage
+	let product = localStorage.key(rowIndex);
+	localStorage.removeItem(product);
+	//Mettre à jour le badge panier
+	cartContent();
+};
+const updateRowIndex = (rowDeleted) => {
+	let rows = document.querySelectorAll("[data-index]");
+	for (let row of rows) {
+		let index = Number(row.getAttribute("data-index"));
+		if (index > rowDeleted) {
+			row.setAttribute("data-index", index - 1);
+		}
+	}
+};
+
+const updateTotalPrice = (productDeleteButton) => {
+	let priceElement = productDeleteButton.parentElement.previousElementSibling;
+	let price = priceElement.textContent.slice(0, -1);
+	let totalPriceElement = document.querySelector("#totalCell strong");
+	let totalPrice = totalPriceElement.textContent.slice(0, -1);
+	let newPrice = Number(totalPrice) - Number(price);
+	totalPriceElement.textContent = newPrice.toFixed(2) + "€";
+};
 // fetchId("5beaa8bf1c9d440000a57d94").then((rep) => console.log(rep.name));
 
 // let table = document.getElementById("summary");
@@ -36,11 +66,11 @@ async function fetchId(productId) {
 //createRow("5beaa8bf1c9d440000a57d94").then();
 
 async function summary() {
-	let k = 0;
+	var k = 0;
 	let table = document.getElementById("summary");
 	let totalPrice = 0;
 	if (localStorage.length == 0) {
-		table.parentElement.classList.add("d-none");
+		table.parentElement.parentElement.parentElement.classList.add("d-none");
 		let alert = document.createElement("div");
 		let h1 = document.getElementsByTagName("h1")[0];
 		h1.after(alert);
@@ -49,10 +79,11 @@ async function summary() {
 			"<strong>Votre panier est vide!</strong> <br/>Veuillez ajouter des articles pour passer commande.";
 		document.getElementsByTagName("fieldset")[0].setAttribute("disabled", "");
 	} else {
-		table.parentElement.classList.remove("d-none");
+		table.parentElement.parentElement.parentElement.classList.remove("d-none");
 		document.getElementsByTagName("fieldset")[0].removeAttribute("disabled");
 		while (k < localStorage.length) {
 			let productRow = document.createElement("tr");
+
 			let productK = localStorage.key(k);
 			let quantityK = localStorage.getItem(productK);
 			const response = await fetchId(productK);
@@ -83,7 +114,17 @@ async function summary() {
 			productRow.appendChild(price);
 
 			let deleteItem = document.createElement("td");
-			deleteItem.innerHTML = "<i class='fas fa-trash-alt btn'></i>";
+			let deleteButton = document.createElement("button");
+			deleteButton.classList.add("btn", "btn-outline-warning");
+			deleteButton.setAttribute("data-index", k);
+			deleteButton.innerHTML = "<i class='fas fa-trash-alt'></i>";
+			deleteItem.appendChild(deleteButton);
+			deleteButton.addEventListener("click", function () {
+				let rowIndex = this.dataset.index;
+				updateTotalPrice(this);
+				removeItem(rowIndex);
+				updateRowIndex(rowIndex);
+			});
 			productRow.appendChild(deleteItem);
 
 			table.appendChild(productRow);
@@ -175,10 +216,14 @@ const postMyOrder = () => {
 		// }
 	)
 		.then((response) => {
+			if (!response.ok) {
+				throw new Error("Server response is not successful");
+			}
 			return response.json();
 		})
+		.catch((error) => alert("Erreur : " + error))
 		.then((response) => {
-			console.log(response.orderId);
+			//console.log(response.orderId);
 			return response.orderId;
 		})
 		.then((orderId) => {
@@ -187,17 +232,55 @@ const postMyOrder = () => {
 			let confirmParameters = "?price=" + totalPrice + "&order_id=" + orderId;
 			let confirmUrl = "confirmedorder.html" + confirmParameters;
 			//console.log(confirmUrl);
-			//window.location.href = confirmUrl;
+			window.location.href = confirmUrl;
 		});
 };
 //postMyOrder();
+function fieldValidation(input) {
+	var letters = /^[A-Za-z]+$/;
+	var email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+	if (
+		(input.type == "email" || input.id == "email") &&
+		email.test(input.value)
+	) {
+		return true;
+	} else if (
+		input.type == "text" &&
+		input.id != "email" &&
+		input.value.length >= 2 &&
+		letters.test(input.value)
+	) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 let order = document.getElementById("order");
 order.addEventListener("click", (e) => {
-	e.preventDefault();
-	postMyOrder();
-	//localStorage.clear(); à faire dans le script de la page de confirmation
+	let fields = document.getElementsByTagName("input");
+	let isValid = true;
+	for (let field of fields) {
+		if (!fieldValidation(field)) {
+			isValid = false;
+		}
+	}
+	console.log("Formulaire valide :" + isValid);
+	if (!isValid) {
+		alert(
+			"Les champs du formulaire ne sont pas correctement compléter pour passer la commande."
+		);
+	} else {
+		e.preventDefault();
+		postMyOrder();
+	}
+	//e.preventDefault();
+	//debugger;
+	//postMyOrder();
+	//localStorage.clear(); //à faire dans le script de la page de confirmation
 });
-let form = document.getElementsByTagName("form")[0];
+
 // form.addEventListener("submit", (e) => {
 // 	e.preventDefault();
 // 	console.log("Hello");

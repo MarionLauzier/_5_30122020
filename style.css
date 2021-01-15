@@ -91,7 +91,8 @@ label img {
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 }
-.btn-primary {
+.btn-primary,
+.btn-primary:disabled {
 	background-color: #8f5bfe;
 }
 .btn-primary:hover,
@@ -199,7 +200,7 @@ footer .nav-link:hover {
 	margin-left: -2px;
 }
 .input-group-text,
-[class*="input-group"] button {
+.btn-outline-warning {
 	background-color: transparent;
 	color: #5f3aad;
 	border: 2px solid #5f3aad;
@@ -216,19 +217,18 @@ footer .nav-link:hover {
 	font-size: 1.5rem;
 }
 
-[class*="input-group"] button {
-	color: #5f3aad;
-}
-[class*="input-group"] button:hover,
-[class*="input-group"] button:focus {
+.btn-outline-warning:hover,
+.btn-outline-warning:focus {
 	background-color: #5f3aad;
 	color: white;
 	border: 2px solid #5f3aad;
 }
-[class*="input-group"] button:focus {
+
+.btn-outline-warning:focus {
 	box-shadow: 0 0 0 0.2rem rgba(143, 91, 254, 0.5);
 }
-[class*="input-group"] button:not(:disabled):not(.disabled):active:focus {
+
+.btn-outline-warning:not(:disabled):not(.disabled):active:focus {
 	box-shadow: 0 0 0 0.2rem rgba(143, 91, 254, 0.5);
 	background-color: #5f3aad;
 	color: white;
@@ -272,6 +272,9 @@ footer .nav-link:hover {
 /* #endregion */
 
 /* #region  Cart */
+.table-row {
+	background-color: #f3e9f1;
+}
 .table {
 	border-color: #5f3aad;
 }
@@ -286,7 +289,15 @@ td img {
 	border-color: #5f3aad;
 }
 .table tfoot td {
-	
-	border-width:2px;
+	border-width: 2px;
 	border-bottom: solid 1px #5f3aad;
+}
+
+.form-control {
+	border-color: #5f3aad;
+}
+.form-control:focus {
+	box-shadow: 0 0 0 0.2rem rgba(143, 91, 254, 0.5);
+	border-color: #5f3aad;
+}
 /* #endregion */
