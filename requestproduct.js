@@ -38,13 +38,7 @@ const showProduct = (article) => {
 fetchProduct();
 
 let badges = document.getElementsByClassName("badge-primary");
-// for (let b of badges) {
-// 	b.style.animationPlayState = "paused";
-// 	// b.addEventListener("animationend", () => {
-// 	// 	b.style.animationPlayState = "paused";
 
-// 	//});
-// }
 const addToCart = () => {
 	let articleId = document.getElementsByTagName("article")[0].id;
 	let quantity = document.getElementById("quantity").value;
@@ -65,13 +59,7 @@ const addToCart = () => {
 let cart = document.getElementById("addcart");
 cart.addEventListener("click", () => {
 	addToCart();
-	// for (let b of badges) {
-	// 	b.style.animationPlayState = "running";
-	// 	b.addEventListener("animationend", () => {
-	// 		b.style.animationPlayState = "paused";
-	// 		console.log("done");
-	// 	});
-	// }
+
 	setTimeout(function () {
 		for (let b of badges) {
 			b.style.animationPlayState = "paused";

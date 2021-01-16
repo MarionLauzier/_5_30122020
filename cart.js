@@ -1,19 +1,3 @@
-// const basicsummary = () => {
-// 	var k = 0;
-// 	let table = document.getElementById("summary");
-// 	while (k < localStorage.length) {
-// 		let productRow = document.createElement("tr");
-// 		let productK = localStorage.key(k);
-// 		let quantityK = localStorage.getItem(productK);
-// 		productRow.innerHTML =
-// 			"<td>" + productK + "</td><td>" + quantityK + "</td>";
-// 		table.appendChild(productRow);
-
-// 		k++;
-// 	}
-// };
-// basicsummary();
-
 async function fetchId(productId) {
 	const response = await fetch(
 		"http://localhost:3000/api/teddies/" + productId
@@ -52,18 +36,6 @@ const updateTotalPrice = (productDeleteButton) => {
 	let newPrice = Number(totalPrice) - Number(price);
 	totalPriceElement.textContent = newPrice.toFixed(2) + "€";
 };
-// fetchId("5beaa8bf1c9d440000a57d94").then((rep) => console.log(rep.name));
-
-// let table = document.getElementById("summary");
-
-// async function createRow(productId) {
-// 	const response = await fetchId(productId);
-// 	let productRow = document.createElement("tr");
-// 	productRow.innerHTML = "<td>" + response.name + "</td>";
-// 	table.appendChild(productRow);
-// 	return response;
-// }
-//createRow("5beaa8bf1c9d440000a57d94").then();
 
 async function summary() {
 	var k = 0;
@@ -168,53 +140,11 @@ const postOrderSetUp = () => {
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(postBody),
 	};
-	// console.log(postParameters);
 	return postParameters;
 };
-const postOrder = () => {
-	let postParameters = postOrderSetUp();
-	let aEnvoyer = JSON.stringify({
-		contact: getContact(),
-		products: ["5beaa8bf1c9d440000a57d94"],
-	});
-	fetch("http://localhost:3000/api/teddies/order", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: aEnvoyer,
-	})
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error("Server response is not successful");
-			}
-			return response.json();
-		})
-		.then((response) => {
-			console.log(response);
-		})
-		.catch((error) => alert("Erreur : " + error));
-};
 
-// let aEnvoyer = {
-// 	contact: getContact(),
-// 	// {
-// 	// 	firstName: "test",
-// 	// 	lastName: "test",
-// 	// 	address: "test",
-// 	// 	city: "test",
-// 	// 	email: "test",
-// 	// },
-// 	products: getOrder(),
-// };
 const postMyOrder = () => {
-	fetch(
-		"http://localhost:3000/api/teddies/order",
-		postOrderSetUp()
-		// {
-		// 	method: "POST",
-		// 	headers: { "Content-Type": "application/json" },
-		// 	body: JSON.stringify(aEnvoyer),
-		// }
-	)
+	fetch("http://localhost:3000/api/teddies/order", postOrderSetUp())
 		.then((response) => {
 			if (!response.ok) {
 				throw new Error("Server response is not successful");
@@ -223,7 +153,6 @@ const postMyOrder = () => {
 		})
 		.catch((error) => alert("Erreur : " + error))
 		.then((response) => {
-			//console.log(response.orderId);
 			return response.orderId;
 		})
 		.then((orderId) => {
@@ -231,11 +160,10 @@ const postMyOrder = () => {
 				.textContent;
 			let confirmParameters = "?price=" + totalPrice + "&order_id=" + orderId;
 			let confirmUrl = "confirmedorder.html" + confirmParameters;
-			//console.log(confirmUrl);
 			window.location.href = confirmUrl;
 		});
 };
-//postMyOrder();
+
 function fieldValidation(input) {
 	var letters = /^[A-Za-z]+$/;
 	var email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -275,13 +203,4 @@ order.addEventListener("click", (e) => {
 		e.preventDefault();
 		postMyOrder();
 	}
-	//e.preventDefault();
-	//debugger;
-	//postMyOrder();
-	//localStorage.clear(); //à faire dans le script de la page de confirmation
 });
-
-// form.addEventListener("submit", (e) => {
-// 	e.preventDefault();
-// 	console.log("Hello");
-// });

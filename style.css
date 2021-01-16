@@ -3,6 +3,10 @@ header,
 article {
 	background-color: #f3e9f1;
 }
+body {
+	background: linear-gradient(rgba(227, 151, 61, 0.5), rgba(143, 91, 254, 0.5));
+}
+/* #region  header */
 header .nav-link {
 	transform: scale(1);
 	transition: all 200ms;
@@ -42,10 +46,37 @@ header .nav-link:hover {
 	/* background-size: cover; */
 	position: relative;
 }
-body {
-	background: linear-gradient(rgba(227, 151, 61, 0.5), rgba(143, 91, 254, 0.5));
+/* #endregion */
+
+/* #region  Footer */
+footer {
+	background-color: #5f3aad;
+}
+footer .nav-link {
+	font-weight: 600;
+	transform: scale(1);
+	transition: all 200ms;
+}
+footer .nav-link:hover {
+	transform: scale(1.1);
+	text-decoration: underline;
+}
+.fab {
+	color: #5f3aad;
+}
+.fa-inverse.fas {
+	color: rgba(255, 255, 255, 0.8);
 }
 
+.dropdown-menu {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+.dropdown-menu a {
+	color: #5f3aad;
+	font-weight: 600;
+}
+/* #endregion */
+/* #region  Index body */
 .jumbotron.title {
 	background-color: #f3e9f1;
 	color: #5f3aad;
@@ -140,37 +171,9 @@ label img {
 		height: 350px;
 	}
 }
-
-/* #region  Footer */
-footer {
-	background-color: #5f3aad;
-}
-footer .nav-link {
-	font-weight: 600;
-	transform: scale(1);
-	transition: all 200ms;
-}
-footer .nav-link:hover {
-	transform: scale(1.1);
-	text-decoration: underline;
-}
-.fab {
-	color: #5f3aad;
-}
-.fa-inverse.fas {
-	color: rgba(255, 255, 255, 0.8);
-}
-
-.dropdown-menu {
-	background-color: rgba(255, 255, 255, 0.5);
-}
-.dropdown-menu a {
-	color: #5f3aad;
-	font-weight: 600;
-}
 /* #endregion */
 
-/* #region  Article Page */
+/* #region  Article Body */
 .goback {
 	color: #5f3aad;
 	font-weight: 400;
@@ -271,7 +274,7 @@ footer .nav-link:hover {
 }
 /* #endregion */
 
-/* #region  Cart */
+/* #region  Cart page body */
 .table-row {
 	background-color: #f3e9f1;
 }
@@ -299,5 +302,22 @@ td img {
 .form-control:focus {
 	box-shadow: 0 0 0 0.2rem rgba(143, 91, 254, 0.5);
 	border-color: #5f3aad;
+}
+/* #endregion */
+
+/*  #region confirmed order page body  */
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+main {
+	flex-grow: 1;
+}
+h1 img {
+	height: 40px;
+	width: 40px;
+	margin-top: 5px;
 }
 /* #endregion */

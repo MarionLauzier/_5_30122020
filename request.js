@@ -17,7 +17,6 @@ const fetchArticles = () => {
 const addArticle = (article) => {
 	var figure = document.createElement("figure");
 	figure.classList.add("card", "border-0", "shadow-sm");
-	//figure.id=article._id;
 	var img = document.createElement("img");
 	img.classList.add("card-img-top");
 	img.setAttribute("src", article.imageUrl);
@@ -44,8 +43,6 @@ const addArticle = (article) => {
 	details.setAttribute("href", "article.html?article_id=" + article._id);
 	details.innerHTML = "Voir les détails du produit";
 	caption.appendChild(details);
-
-	// figure.innerHTML=("<img class='card-img-top' src="+ article.imageUrl + " alt=.../>" +"<figcaption class='card-body text-center'> <h4 class='card-title text-left'>"+ article.name +"</h4> <p class='card-text'><strong>"+ (article.price/100).toFixed(2)+"€</strong></p> <a href='article.html?article_id="+article._id+"'class='stretched-link btn btn-primary border-0'> Voir les détails du produit </a></figcaption>");
 	var articleContainer = document.getElementById("articles");
 
 	var col = document.createElement("div");
@@ -94,10 +91,6 @@ pricedown.addEventListener("click", () => {
 priceup.addEventListener("click", () => {
 	order("up");
 });
-let test = document.getElementsByTagName("li");
-for (let i in test) {
-	//console.log(test[i].textContent);
-}
 
 let search = document.getElementById("peluche");
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="height: 100%">
 	<head>
 		<meta charset="utf-8" />
 
@@ -23,7 +23,7 @@
 			crossorigin="anonymous"
 		></script>
 
-		<script src="cart.js" async></script>
+		<script src="confirmedorder.js" async></script>
 	</head>
 	<body>
 		<header>
@@ -68,7 +68,28 @@
 			<div class="jumbotron banner mb-0"></div>
 		</header>
 		<main class="container">
-			<h1 class="row my-4">Votre commande:</h1>
+			<h1 class="row my-4">
+				<img src="img/teddy-bear.png" alt="icone tête ours" /> Confirmation de
+				commande <img src="img/teddy-bear.png" alt="icone tête ours" />
+			</h1>
+			<p>
+				Félicitation votre commande numéro:
+				<strong id="orderid"></strong> pour un montant total de
+				<span id="price"></span> est bien validée !
+			</p>
+			<p>
+				<i class="fas fa-shipping-fast"></i> Vous recevrez vos articles très
+				prochainement !
+			</p>
+			<p>
+				Nous vous remercions d'avoir commandé sur Orinoco et nous espérons vous
+				revoir très vite sur notre site.
+			</p>
+			<p class="text-center">
+				<a href="index.html" class="goback ml-1 py-1 px-2"
+					>Retourner à l'accueil du site</a
+				>
+			</p>
 		</main>
 		<footer class="text-center text-lg-start">
 			<div class="container pt-3">
@@ -141,6 +162,7 @@
 				</div>
 			</div>
 		</footer>
+
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 			integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
