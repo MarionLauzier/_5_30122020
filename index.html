@@ -11,13 +11,11 @@
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="CSS/style.css" />
 	<script src="https://kit.fontawesome.com/278b17786f.js" crossorigin="anonymous"></script>
 
-	<script src="request.js" async></script>
-	<script src="cartContent.js" async></script>
-
-
+	<script src="JS/request.js" async></script>
+	<script src="JS/cartContent.js" async></script>
 </head>
 
 <body>
@@ -27,11 +25,11 @@
 				<img src="img/logo.png" alt="logo orinoco" />
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span> 
+				aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 				<span class="badge badge-pill badge-primary">
-					<span class="nbitems"></span> 
-					<img src="img/teddy-bear4.png" alt="icône tête d'ours" /> 
+					<span class="nbitems"></span>
+					<img src="img/teddy-bear4.png" alt="icône tête d'ours" />
 				</span>
 			</button>
 			<div id="navbarContent" class="collapse navbar-collapse justify-content-end">
@@ -58,63 +56,63 @@
 	</header>
 
 	<main class="container">
-		<h1 class="row jumbotron title text-center">Trouvez les plus beaux ours en peluches sur Orinoco.</h1>
+		<h1 class="row jumbotron title text-center">
+			Trouvez les plus beaux ours en peluches sur Orinoco.
+		</h1>
 
-		<h2 class="w-100 text-center font-italic mb-4">Toutes nos peluches sont faites à la main!</h1>
-			<form class="form-inline mb-3" method="POST" action="#">
+		<h2 class="w-100 text-center font-italic mb-4">
+			Toutes nos peluches sont faites à la main!
+		</h2>
+		<form class="form-inline mb-3" method="POST" action="#">
+			<label for="peluche">
+				Trouvez votre <img src="img/teddy-bear.png" alt="icone tête ours" /> :
+			</label>
+			<div class="d-flex flex-nowrap">
+				<input type="search" id="peluche" name="recherche" placeholder="peluche"
+					class="form-control ml-2 shadow" />
 
-				<label for="peluche"> Trouvez votre <img src="img/teddy-bear.png" alt="icone tête ours" /> : </label>
-				<div class="d-flex flex-nowrap">
-					<input type="search" id="peluche" name="recherche" placeholder="peluche"
-						class="form-control ml-2 shadow" />
-
-					<button type="submit" name="lance_recherche" id="search" class="btn btn-primary shadow">
-						<span class="fas fa-search"></span>
-					</button>
-				</div>
-
-			</form>
-			<p class="row font-weight-bold ml-5 mb-0">Triez par :</p>
-			<ul class="row list-inline justify-content-center">
-				<li class='list-inline-item mb-2 shadow' id="filterup">
-
-					<i class="fas fa-euro-sign"></i>
-					<i class="fas fa-long-arrow-alt-up"></i>
-					<a href="#">Prix croissant</a>
-				</li>
-				<li class='list-inline-item  mb-2 shadow' id="filterdown">
-					<i class="fas fa-euro-sign"></i>
-					<i class="fas fa-long-arrow-alt-down"></i>
-					<a href="#">Prix décroissant</a>
-				</li>
-				<li class='list-inline-item  mb-2 shadow'><i class="fas fa-award"></i> <a href="#">Pertinence</a></li>
-				<li class='list-inline-item  mb-2 shadow'><i class="fas fa-certificate"></i> <a href="#">Nouveautés</a>
-				</li>
-				<li class='list-inline-item  mb-2'>
-					<i class="fas fa-heart"></i>
-					<a href="#">Popularité</a>
-				</li>
-			</ul>
-
-			<h3 class="row">Articles</h3>
-
-			<div class="row" id="articles">
-
-
-
-
+				<button type="submit" name="lance_recherche" id="search" class="btn btn-primary shadow">
+					<span class="fas fa-search"></span>
+				</button>
 			</div>
+		</form>
+		<p class="row font-weight-bold ml-5 mb-0">Triez par :</p>
+		<ul class="row list-inline justify-content-center">
+			<li class="list-inline-item mb-2 shadow" id="filterup">
+				<i class="fas fa-euro-sign"></i>
+				<i class="fas fa-long-arrow-alt-up"></i>
+				<a href="#">Prix croissant</a>
+			</li>
+			<li class="list-inline-item mb-2 shadow" id="filterdown">
+				<i class="fas fa-euro-sign"></i>
+				<i class="fas fa-long-arrow-alt-down"></i>
+				<a href="#">Prix décroissant</a>
+			</li>
+			<li class="list-inline-item mb-2 shadow">
+				<i class="fas fa-award"></i> <a href="#">Pertinence</a>
+			</li>
+			<li class="list-inline-item mb-2 shadow">
+				<i class="fas fa-certificate"></i> <a href="#">Nouveautés</a>
+			</li>
+			<li class="list-inline-item mb-2">
+				<i class="fas fa-heart"></i>
+				<a href="#">Popularité</a>
+			</li>
+		</ul>
 
+		<h3 class="row">Articles</h3>
 
+		<div class="row" id="articles">
+			<!-- Elément prévu pour recevoir l'ensemble des cartes article générées par request.js -->
+		</div>
 	</main>
 	<footer class="text-center text-lg-start">
 		<div class="container pt-3">
-			<div class=" navbar navbar-expand-md navbar-dark">
-
-
-				<ul class="navbar-nav w-100 justify-content-around ">
+			<div class="navbar navbar-expand-md navbar-dark">
+				<ul class="navbar-nav w-100 justify-content-around">
 					<li class="nav-item">
-						<a class="nav-link" href="mailto: contact@orinoco.fr"> Nous Contactez</a>
+						<a class="nav-link" href="mailto:contact@orinoco.fr">
+							Nous Contactez</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#"> Centre d'aide</a>
@@ -123,10 +121,10 @@
 						<a class="nav-link" href="#">Conditions générales de vente</a>
 					</li>
 					<li class="nav-item dropdown">
-
-						<a class="dropdown-toggle nav-link" id="DropdownMenuLink" role="button" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false" href="#"> Crédits</a>
-						<div class="dropdown-menu p-1" aria-labelledby="dropdownMenuLink" style="max-width: 200px;">
+						<a class="dropdown-toggle nav-link" id="dropdownMenuLink" role="button" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" href="#">
+							Crédits</a>
+						<div class="dropdown-menu p-1" aria-labelledby="dropdownMenuLink" style="max-width: 200px">
 							<div class="credit">
 								Icons made by
 								<a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a>
@@ -136,17 +134,16 @@
 						</div>
 					</li>
 				</ul>
-
 			</div>
 			<div class="row my-3">
 				<div class="col">
 					<span class="fa-stack">
-						<i class="fas fa-circle fa-stack-2x fa-inverse "></i>
-						<i class="fab fa-facebook-f fa-stack-1x "></i>
+						<i class="fas fa-circle fa-stack-2x fa-inverse"></i>
+						<i class="fab fa-facebook-f fa-stack-1x"></i>
 					</span>
 					<span class="fa-stack">
 						<i class="fas fa-circle fa-stack-2x fa-inverse"></i>
-						<i class="fab fa-twitter fa-stack-1x "></i>
+						<i class="fab fa-twitter fa-stack-1x"></i>
 					</span>
 					<span class="fa-stack">
 						<i class="fas fa-circle fa-stack-2x fa-inverse"></i>
@@ -155,7 +152,9 @@
 				</div>
 			</div>
 			<div class="row">
-				<p class="text-white-50">Orinoco, 25 avenue de la liberté, 12 456 Webville</p>
+				<p class="text-white-50">
+					Orinoco, 25 avenue de la liberté, 12 456 Webville
+				</p>
 			</div>
 		</div>
 	</footer>
@@ -168,7 +167,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
-
 </body>
 
 </html>

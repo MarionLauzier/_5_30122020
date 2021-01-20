@@ -22,7 +22,8 @@ header .nav-link:hover {
 	vertical-align: middle;
 	color: #e3973d;
 	position: relative;
-	animation: enhance 400ms alternate infinite paused;
+	animation: enhance 400ms alternate infinite;
+	animation-play-state: paused;
 }
 .badge-primary img {
 	width: 20px;
@@ -39,7 +40,7 @@ header .nav-link:hover {
 }
 
 .banner {
-	background-image: url("img/banner.png");
+	background-image: url("../img/banner.png");
 	min-height: 258px;
 	background-position: center;
 	/* background-repeat: no-repeat; */
