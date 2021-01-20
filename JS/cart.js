@@ -228,7 +228,7 @@ const postMyOrder = () => {
 				.textContent;
 			// ajout aux paramètres de l'url de la page de confirmation, le prix total et le numéro de commande
 			let confirmParameters = "?price=" + totalPrice + "&order_id=" + orderId;
-			let confirmUrl = "confirmedOrder.html" + confirmParameters;
+			let confirmUrl = "confirmedorder.html" + confirmParameters;
 			// redirection vers la page de confirmation de commande
 			window.location.href = confirmUrl;
 		});
