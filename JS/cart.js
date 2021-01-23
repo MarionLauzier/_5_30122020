@@ -236,8 +236,9 @@ const postMyOrder = () => {
 
 //fonction permettant de valider les données saisies dans un champ du formulaire en renvoyant un booléen
 function fieldValidation(input) {
-	// regex de test pour les champs de texte et d'email
-	var letters = /^[A-Za-z]+$/;
+	// regex de test pour les champs de texte, d'adresse et d'email
+	var letters = /^[\p{L} '-]+$/u;
+	var address = /^[\p{L} ,.'0-9-]+$/u;
 	var email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 	//test si le champ est un email
 	if (
@@ -245,10 +246,20 @@ function fieldValidation(input) {
 		email.test(input.value)
 	) {
 		return true;
+	}
+	//test si le champ est une adresse, il doit contenir au minimum 2 caractères
+	else if (
+		input.type == "text" &&
+		input.id == "address" &&
+		input.value.length >= 2 &&
+		address.test(input.value)
+	) {
+		return true;
 		// test s'il s'agit d'un champ de texte, il doit contenir que des lettres et au minimum 2 caractères
 	} else if (
 		input.type == "text" &&
 		input.id != "email" &&
+		input.id != "address" &&
 		input.value.length >= 2 &&
 		letters.test(input.value)
 	) {

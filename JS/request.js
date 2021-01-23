@@ -100,7 +100,7 @@ function order(direction) {
 	// tri du tableau des prix dans l'ordre croissant
 	orderlistprix.sort();
 	// inversion du tableau dans le cas d'un ordre voulu décroissant
-	if (direction == "up") {
+	if (direction == "down") {
 		orderlistprix.reverse();
 	}
 	// réorganisation de l'ordre d'affichage des articles en ajoutant la classe Bootstrap "order-x"
